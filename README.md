@@ -1,2 +1,2 @@
-# telegramm-bot
-This is a telegramm bot
+# telegram bot
+**This is a telegram bot**
