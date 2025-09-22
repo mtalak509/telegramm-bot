@@ -40,7 +40,7 @@ transliteration_dict = {'а': 'a',
                         'ь': '',
                         'э': 'e',
                         'ю': 'iu',
-                        'я': 'ia',}
+                        'я': 'ia'}
 
 # 2. Инициализация объектов
 Token = os.getenv('TOKEN')
@@ -84,7 +84,8 @@ async def transliteration(message: Message):
     if is_alive:
         user_name = message.from_user.full_name
         user_id = message.from_user.id
-        text = ''.join(transliteration_dict.get(char, char) for char in message.text.lower()).capitalize()
+        text = ''.join(transliteration_dict.get(char, char) for char in message.text.lower()).split(' ')
+        text = ' '.join(elem.capitalize() for elem in text)
         logging.info(f'{datetime.now()}, {user_name}, {user_id}: {text}')
         await message.answer(text=text)
     else:
